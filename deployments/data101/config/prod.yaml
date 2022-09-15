@@ -1,25 +1,25 @@
 nfsPVC:
   nfs:
-    shareName: export/data8homes-2022-08-08/data8/prod
+    shareName: export/homedirs-other-2020-07-29/data101/prod
 
 jupyterhub:
   ingress:
     enabled: true
     hosts:
-      - data8.datahub.berkeley.edu
+      - data101.datahub.berkeley.edu
     tls:
       - secretName: tls-cert
         hosts:
-          - data8.datahub.berkeley.edu
+          - data101.datahub.berkeley.edu
   hub:
     config:
       GenericOAuthenticator:
-        extra_params:
-          client_id:  service-data8.datahub.berkeley.edu
-        client_id:  service-data8.datahub.berkeley.edu
         authorize_url: https://datahub.berkeley.edu/hub/api/oauth2/authorize
         token_url: https://datahub.berkeley.edu/hub/api/oauth2/token
         userdata_url: https://datahub.berkeley.edu/hub/api/user
+      CanvasOAuthenticator:
+        client_id: '10720000000000472'
+        oauth_callback_url: 'https://data101.berkeley.edu/hub/oauth_callback'
     db:
       pvc:
         # This also holds logs
